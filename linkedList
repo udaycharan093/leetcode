@@ -1,0 +1,47 @@
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next =None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    def createll(self,n): # dynamic Linked List
+        i = 0
+        while i<n:
+            newnode = Node(input("enter value"))
+            if self.head == None:
+                self.head = newnode
+            else:
+                t = self.head
+                while t.next:
+                    t = t.next
+                t.next = newnode
+            i = i+1
+            
+    def show(self):
+        t = self.head
+        while t :
+            print(t.val,end = "->")
+            t = t.next
+    def reverse(self,head):
+        prev = None
+        while head:
+            cur = head
+            head = head .next
+            cur.next = prev
+            prev = cur
+        self.head = prev
+        return prev
+ # static Linked List   
+obj = LinkedList()#object creation over
+'''obj.head = Node(1)
+obj.head.next = Node(2)
+obj.head.next.next = Node(3)
+obj.head.next.next.next = Node(4)
+obj.head.next.next.next.next = Node(5)'''
+obj.createll(5)
+obj.show()
+obj.reverse(obj.head)
+print("\n reverse list")
+obj.show()
