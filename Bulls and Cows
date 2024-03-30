@@ -14,3 +14,34 @@ for i,d in enumerate (secretList):
             y=y+1
 ans=str(x)+"A"+str(y)+"B"
 print(ans)
+
+
+
+# without dub
+secret=int(input("Enter secret number"))
+guess=int(input("Enter guess number"))
+secretList=[d for d in str(secret)]
+guessList=[d for d in str(guess)]
+x=0
+y=0
+sset=set()
+gset=set()
+
+for i,d in enumerate (secretList):
+    sset.add((i,d))
+res= sset.intersection(gset)
+x=len(res)
+for item in res:
+    secretList[item[0]]=-1
+    guessList[item[0]]=-1
+bctr,cctr=0,0
+for i,d in enumerate (secretList):
+    if d in guessList:
+        if secretList[i]==guessList[i]:
+            bctr+= 1
+        else:
+            cctr+= 1
+            ind=guessList.index(d)
+            guessList[ind]=-2
+            secretList[i]=-2
+print(str(bctr)+"A"+str(cctr)+"B")
